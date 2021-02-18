@@ -1,0 +1,11 @@
+[
+    {
+        "url": "www.google.com",
+        "price": 1000,
+        "name": "laptop name",
+        "description": "laptop description",
+        "platform": "mac",
+        "purpose": "any",
+        "brand": "apple"
+    }
+]
