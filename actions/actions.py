@@ -97,7 +97,7 @@ class ActionRecommendLaptop(Action):
             for laptop in laptops[:3]:
                 dispatcher.utter_message(
                     text=f'{laptop["name"]} (${laptop["price"]})-- {laptop["description"]}.')
-        return []
+        return [FollowupAction('action_goodbye')]
 
 
 class ActionGoodbye(Action):
