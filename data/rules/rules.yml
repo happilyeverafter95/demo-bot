@@ -18,11 +18,6 @@ rules:
     - intent: select_price
     - action: action_select_upper_price
 
-- rule: grab platform when user selects platform
-  steps:
-    - intent: select_platform
-    - action: action_select_platform
-
 - rule: grab brand preference
   steps:
     - intent: select_brand

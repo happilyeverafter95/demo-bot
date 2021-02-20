@@ -7,7 +7,6 @@ intents:
   - greet
   - goodbye
   - select_price
-  - select_platform
   - select_brand
   - select_purpose
   - affirm
@@ -15,14 +14,6 @@ intents:
 slots:
   upper_price:
     type: text
-    influence_conversation: true
-  platform:
-    type: categorical
-    values:
-      - Windows
-      - MacOS
-      - ChromeOS
-      - no preference
     influence_conversation: true
   brand:
     type: list
@@ -33,9 +24,6 @@ slots:
       - web browsing
       - productivity
       - gaming
-    influence_conversation: true
-  other_requirements:
-    type: text
     influence_conversation: true
 responses:
   utter_greet:
@@ -48,15 +36,6 @@ responses:
     - text: Sorry, I'm not sure what that means. Can you rephrase what you just said?
   utter_brand:
     - text: Are there any particular brands you are looking for? Please separate multiple brands with a comma.\n\nType "no preference" if there are no preferences.
-  utter_platform:  # TODO: use quick replies & custom json template to get over facebook 3 buttons limit
-    - text: Do you have a preferred platform?
-      buttons:
-      - title: Windows
-        payload: /select_platform{{"platform":"Windows"}}
-      - title: MacOS
-        payload: /select_platform{{"platform":"MacOS"}}
-      - title: Chrome OS
-        payload: /select_platform{{"platform":"ChromeOS"}}
   utter_purpose:
     - text: What will you primarily be using your laptop for?
       buttons:
@@ -72,7 +51,6 @@ actions:
   - action_greet
   - action_select_upper_price
   - action_goodbye
-  - action_select_platform
   - action_select_brand
   - action_select_purpose
   - action_recommend_laptop
