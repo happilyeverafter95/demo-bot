@@ -12,9 +12,9 @@ def select_laptop(price: int, platform: Optional[str], purpose: Optional[str],
         laptops = json.load(f)
     laptops = [x for x in laptops if x['price'] <= price]
     if platform and 'no preference' not in platform:
-        laptops = [x for x in laptops if x['platform'] == platform]
+        laptops = [x for x in laptops if x['platform'].lower() == platform]
     if purpose:
-        laptops = [x for x in laptops if x['purpose'] == purpose]
+        laptops = [x for x in laptops if x['purpose'].lower() == purpose]
     if brand and 'no preference' not in brand:
         laptops = [x for x in laptops if x['brand'] in brand]
     return laptops
@@ -37,12 +37,12 @@ class ActionSelectPrice(Action):
         return 'action_select_upper_price'
 
     def validate_price(self, message: str) -> bool:
-        numerical_values = [int(s) for s in message.split() if s.isdigit()]
+        numerical_values = [int(s) for s in message.replace('$', '').split() if s.isdigit()]
         return len(numerical_values) >= 1
 
     def extract_price(self, message: str) -> int:
         # TODO: dedup methods
-        numerical_values = [int(s) for s in message.split() if s.isdigit()]
+        numerical_values = [int(s) for s in message.replace('$', '').split() if s.isdigit()]
         if len(numerical_values) >= 1:
             return numerical_values[0]
         else:
