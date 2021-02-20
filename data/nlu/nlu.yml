@@ -1,0 +1,81 @@
+
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hiya
+    - hello there
+    - hey!
+    - hi.
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - heyyyy
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - goodbye
+    - bye
+    - byee
+    - see you later
+    - I'm leaving, talk to you later
+    - c u later
+    - good bye
+    - chao
+    - bye bye
+- intent: affirm
+  examples: |
+    - yes
+    - Yes
+    - yeah
+    - yup
+    - yep
+    - Yes, I do
+    - yea
+    - ya
+    - affirmative
+- intent: deny
+  examples: |
+    - nope
+    - no
+    - No
+    - noo
+    - no, I do not
+    - nope, I don't
+    - negative
+- intent: select_price
+  examples: |
+    - $100
+    - $1000
+    - $500
+    - the most I want to spend is $500
+    - no more than $Y
+    - at most $X
+    - less than $X
+    - my budget is $X
+    - 700 dollars
+- intent: select_platform
+  examples: |
+    - windows
+    - macOS
+    - chromeOS
+- intent: select_brand
+  examples: |
+    - Acer
+    - Apple
+    - Asus
+    - Dell
+    - HP
+    - LG
+    - Lenovo
+    - no preference
+- intent: select_purpose
+  examples: |
+    - gaming
+    - productivity
+    - web browsing
+

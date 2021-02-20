@@ -1,0 +1,27 @@
+language: "en"
+
+pipeline:
+  - name: SpacyNLP
+  - name: SpacyTokenizer
+  - name: SpacyFeaturizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    epochs: 100
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    epochs: 100
+
+policies:
+  - name: MemoizationPolicy
+  - name: RulePolicy
+    core_fallback_threshold: 0.3
+    core_fallback_action_name: action_default_fallback
+    enable_fallback_prediction: true
+    restrict_rules: true
+    check_for_contradictions: true

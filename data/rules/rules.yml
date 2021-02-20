@@ -1,0 +1,34 @@
+
+version: "2.0"
+
+rules:
+
+- rule: always greet the user
+  steps:
+    - intent: greet
+    - action: action_greet
+
+- rule: always say goodbye
+  steps:
+    - intent: goodbye
+    - action: action_goodbye
+
+- rule: grab price when user selects price
+  steps:
+    - intent: select_price
+    - action: action_select_upper_price
+
+- rule: grab platform when user selects platform
+  steps:
+    - intent: select_platform
+    - action: action_select_platform
+
+- rule: grab brand preference
+  steps:
+    - intent: select_brand
+    - action: action_select_brand
+
+- rule: grab purpose
+  steps:
+    - intent: select_purpose
+    - action: action_select_purpose

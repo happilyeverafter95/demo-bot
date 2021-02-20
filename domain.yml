@@ -1,0 +1,78 @@
+version: "2.0"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
+intents:
+  - greet
+  - goodbye
+  - select_price
+  - select_platform
+  - select_brand
+  - select_purpose
+  - affirm
+  - deny
+slots:
+  upper_price:
+    type: text
+    influence_conversation: true
+  platform:
+    type: categorical
+    values:
+      - Windows
+      - MacOS
+      - ChromeOS
+      - no preference
+    influence_conversation: true
+  brand:
+    type: list
+    influence_conversation: true
+  purpose:
+    type: categorical
+    values:
+      - web browsing
+      - productivity
+      - gaming
+    influence_conversation: true
+  other_requirements:
+    type: text
+    influence_conversation: true
+responses:
+  utter_greet:
+    - text: Hi, I'm wolf-bot. I am here to help you pick an ideal laptop.
+  utter_price:
+    - text: What is the most you are willing to spend on a new laptop?
+  utter_goodbye:
+    - text: Goodbye! Type "hello" to restart the chat.
+  utter_default:
+    - text: Sorry, I'm not sure what that means. Can you rephrase what you just said?
+  utter_brand:
+    - text: Are there any particular brands you are looking for? Please separate multiple brands with a comma.\n\nType "no preference" if there are no preferences.
+  utter_platform:  # TODO: use quick replies & custom json template to get over facebook 3 buttons limit
+    - text: Do you have a preferred platform?
+      buttons:
+      - title: Windows
+        payload: /select_platform{{"platform":"Windows"}}
+      - title: MacOS
+        payload: /select_platform{{"platform":"MacOS"}}
+      - title: Chrome OS
+        payload: /select_platform{{"platform":"ChromeOS"}}
+  utter_purpose:
+    - text: What will you primarily be using your laptop for?
+      buttons:
+      - title: web browsing
+        payload: /select_purpose{{"purpose":"web browsing"}}
+      - title: productivity
+        payload: /select_purpose{{"purpose":"productivity"}}
+      - title: gaming
+        payload: /select_purpose{{"purpose":"gaming"}}
+  utter_no_recommendations:
+    - text: Sorry, I don't have any recommendations for you at this time.
+actions:
+  - action_greet
+  - action_select_upper_price
+  - action_goodbye
+  - action_select_platform
+  - action_select_brand
+  - action_select_purpose
+  - action_recommend_laptop
