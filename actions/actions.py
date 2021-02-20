@@ -6,13 +6,10 @@ from rasa_sdk.events import FollowupAction, Restarted, SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 
-def select_laptop(price: int, platform: Optional[str], purpose: Optional[str],
-                  brand: Optional[List[str]]) -> List[Dict[str, str]]:
+def select_laptop(price: int, purpose: Optional[str], brand: Optional[List[str]]) -> List[Dict[str, str]]:
     with open('actions/laptops.json') as f:
         laptops = json.load(f)
     laptops = [x for x in laptops if x['price'] <= price]
-    if platform:
-        laptops = [x for x in laptops if x['platform'].lower() == platform]
     if purpose:
         laptops = [x for x in laptops if x['purpose'].lower() == purpose]
     if brand and 'no preference' not in brand:
