@@ -58,11 +58,6 @@ nlu:
     - less than $X
     - my budget is $X
     - 700 dollars
-- intent: select_platform
-  examples: |
-    - windows
-    - macOS
-    - chromeOS
 - intent: select_brand
   examples: |
     - Acer
